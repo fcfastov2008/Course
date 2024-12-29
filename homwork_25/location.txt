@@ -1,0 +1,55 @@
+XPath локатори:
+
+//button[text()='Log in']
+//input[@name='email']
+//input[@name='password']
+//a[contains(@href, 'register')]
+//div[@class='header']//button[text()='Log in']
+//form[@id='login-form']//input[@type='email']
+//form[@id='login-form']//input[@type='password']
+//div[@class='footer']//a[text()='Privacy Policy']
+//div[contains(@class, 'nav')]//button[contains(@class, 'logout')]
+//div[@class='content']//h1[contains(text(), 'Welcome')]
+//div[@class='vehicles-list']//div[@class='vehicle-item']
+//div[@class='vehicle-item']//span[contains(@class, 'vehicle-name')]
+//div[@class='form-container']//button[@type='submit']
+//div[contains(@class, 'profile-info')]//input[@name='username']
+//div[@class='vehicle-item' and @data-id='1']
+//div[@class='header']//a[contains(@href, 'help')]
+//form[@id='registration-form']//input[@name='firstName']
+//form[@id='registration-form']//input[@name='lastName']
+//form[@id='registration-form']//button[@type='submit']
+//ul[@class='menu']//li/a[text()='Home']
+//ul[@class='menu']//li/a[text()='About']
+//div[contains(@class, 'sidebar')]//a[text()='Settings']
+//table[@class='data-table']//th[text()='Name']
+//table[@class='data-table']//tr[td[text()='Ford']]
+//footer[@class='footer']//a[text()='Terms of Service']
+
+CSS локатори:
+
+button:contains('Log in')
+input[name='email']
+input[name='password']
+a[href*='register']
+.header button:contains('Log in')
+form#login-form input[type='email']
+form#login-form input[type='password']
+.footer a:contains('Privacy Policy')
+.nav button.logout
+.content h1:contains('Welcome')
+.vehicles-list .vehicle-item
+.vehicle-item .vehicle-name
+.form-container button[type='submit']
+.profile-info input[name='username']
+.vehicle-item[data-id='1']
+.header a[href*='help']
+form#registration-form input[name='firstName']
+form#registration-form input[name='lastName']
+form#registration-form button[type='submit']
+ul.menu li a:contains('Home')
+ul.menu li a:contains('About')
+.sidebar a:contains('Settings')
+table.data-table th:contains('Name')
+table.data-table tr td:contains('Ford')
+footer.footer a:contains('Terms of Service')
