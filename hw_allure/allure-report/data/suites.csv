@@ -1,0 +1,5 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","1","test_connection","","Thu Jan 23 22:45:00 EET 2025","passed","Thu Jan 23 22:45:00 EET 2025","","test_database_allure","",""
+"","2","test_select_data","","Thu Jan 23 22:45:00 EET 2025","passed","Thu Jan 23 22:45:00 EET 2025","","test_database_allure","",""
+"","23","test_insert_data","","Thu Jan 23 22:45:00 EET 2025","passed","Thu Jan 23 22:45:00 EET 2025","","test_database_allure","",""
+"","3","test_delete_data","","Thu Jan 23 22:45:00 EET 2025","passed","Thu Jan 23 22:45:00 EET 2025","","test_database_allure","",""
