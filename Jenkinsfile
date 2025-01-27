@@ -4,30 +4,31 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/fcfastov2008/Course.git'
+                git 'https://github.com/fcfastov2008/Course.git'
             }
         }
 
         stage('Setup Python Environment') {
             steps {
-                bat '''
-                C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy Bypass -Command "
-                python -m venv venv;
-                .\\venv\\Scripts\\Activate.ps1;
-                pip install --upgrade pip;
-                if (Test-Path 'requirements.txt') {
-                    pip install -r requirements.txt
-        }"
-        '''
-    }
-}
+                script {
+                    sh '''
+                    python3 -m venv venv
+                    source venv/bin/activate
+                    pip install --upgrade pip
+                    pip install -r requirements.txt || echo "No requirements.txt found"
+                    '''
+                }
+            }
+        }
 
         stage('Run Test Script') {
             steps {
-                powershell '''
-                .\\venv\\Scripts\\Activate.ps1
-                python hw_jenkins/test_database.py
-                '''
+                script {
+                    sh '''
+                    source venv/bin/activate
+                    python hw_jenkins/test_database.py
+                    '''
+                }
             }
         }
 
@@ -40,9 +41,9 @@ pipeline {
 
     post {
         always {
-            emailext subject: "Jenkins Build: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                     body: "Check the Jenkins console for details: ${env.BUILD_URL}",
-                     to: 'malytskid@gmail.com'
+            mail to: 'malytskid@gmail.com',
+                 subject: "Jenkins Build: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                 body: "Check the Jenkins console for details: ${env.BUILD_URL}"
         }
     }
 }
