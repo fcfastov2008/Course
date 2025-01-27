@@ -3,7 +3,7 @@ import psycopg2
 import pytest
 import time
 
-time.sleep(60)
+
 
 DB_CONFIG = {
 "host": "localhost",
@@ -14,6 +14,17 @@ DB_CONFIG = {
 
 }
 
+def wait_for_db():
+    for _ in range(50):  
+        try:
+            conn = psycopg2.connect(**DB_CONFIG)
+            conn.close()
+            return True
+        except psycopg2.OperationalError:
+            time.sleep(1)
+    raise Exception("PostgreSQL не запустився вчасно")
+
+wait_for_db()
 
 
 @pytest.fixture
