@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    python -m venv venv
+                    python3 -m venv venv
                     source venv/bin/activate
                     pip install --upgrade pip
                     pip install -r requirements.txt || echo "No requirements.txt found"
@@ -38,12 +38,6 @@ pipeline {
             }
         }
     }
-        post {
-            always {
-                mail to: 'malytskid@gmail.com',
-                 subject: "Jenkins Build: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                 body: "Check the Jenkins console for details: ${env.BUILD_URL}"
-        }
-    }
+      
 
 }
