@@ -14,17 +14,17 @@ DB_CONFIG = {
 
 }
 
-def wait_for_db():
-    for _ in range(50):  
+def wait_for_db(retries=10, delay=5):
+    for attempt in range(retries):
         try:
             conn = psycopg2.connect(**DB_CONFIG)
             conn.close()
-            return True
-        except psycopg2.OperationalError:
-            time.sleep(1)
+            print("PostgreSQL доступний!")
+            return
+        except psycopg2.OperationalError as e:
+            print(f"Спроба {attempt + 1}: PostgreSQL ще не доступний, чекаємо...")
+            time.sleep(delay)
     raise Exception("PostgreSQL не запустився вчасно")
-
-wait_for_db()
 
 
 @pytest.fixture
