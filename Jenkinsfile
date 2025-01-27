@@ -23,6 +23,16 @@ pipeline {
             }
         }
 
+        stage('Wait for PostgreSQL') {
+            steps {
+                script {
+                    sh '''
+                    echo "Очікуємо 30 секунд для запуску PostgreSQL..."
+                    sleep 30
+                    '''
+       }
+    }
+}  
         stage('Run Test Script') {
             steps {
                 script {
