@@ -28,7 +28,7 @@ pipeline {
                 script {
                     sh '''
                     . venv/bin/activate
-                    python hw_jenkins/test_database.py
+                    pytest hw_jenkins/test_database.py --junitxml=test-results.xml
                     '''
                 }
             }
@@ -36,7 +36,7 @@ pipeline {
 
         stage('Publish Results') {
             steps {
-                junit 'hw_jenkins/test_results.xml'
+                 junit '**/test-results.xml'
             }
         }
     }
