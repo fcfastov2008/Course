@@ -38,6 +38,12 @@ pipeline {
             }
         }
     }
-
+        post {
+            always {
+                mail to: 'malytskid@gmail.com',
+                 subject: "Jenkins Build: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                 body: "Check the Jenkins console for details: ${env.BUILD_URL}"
+        }
+    }
 
 }
