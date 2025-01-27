@@ -10,16 +10,17 @@ pipeline {
 
         stage('Setup Python Environment') {
             steps {
-                powershell '''
-                python -m venv venv
-                .\\venv\\Scripts\\Activate.ps1
-                pip install --upgrade pip
-                if (Test-Path "requirements.txt") {
+                bat '''
+                C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy Bypass -Command "
+                python -m venv venv;
+                .\\venv\\Scripts\\Activate.ps1;
+                pip install --upgrade pip;
+                if (Test-Path 'requirements.txt') {
                     pip install -r requirements.txt
-                }
-                '''
-            }
-        }
+        }"
+        '''
+    }
+}
 
         stage('Run Test Script') {
             steps {
