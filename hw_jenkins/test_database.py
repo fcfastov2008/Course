@@ -3,7 +3,7 @@ import psycopg2
 import pytest
 import time
 
-time.sleep(10)
+time.sleep(60)
 
 DB_CONFIG = {
 "host": "localhost",
