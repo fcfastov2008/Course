@@ -41,7 +41,7 @@ pipeline {
         always {
             emailext subject: "Jenkins Build: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                      body: "Check the Jenkins console for details: ${env.BUILD_URL}",
-                     to: 'InsertYour@Mail.Here'
+                     to: 'malytskid@gmail.com'
         }
     }
 }
