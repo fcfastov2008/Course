@@ -15,7 +15,7 @@ pipeline {
                     python3 -m venv venv
                     . venv/bin/activate
                     pip install --upgrade pip
-                    pip install psycopg2
+                     pip install psycopg2-binary
                     pip install -r requirements.txt || echo "No requirements.txt found"
                     '''
                 }
